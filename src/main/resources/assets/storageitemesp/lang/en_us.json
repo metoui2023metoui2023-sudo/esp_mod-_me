@@ -1,5 +1,5 @@
 {
   "key.storageitemesp.storage": "Toggle Storage ESP",
   "key.storageitemesp.items": "Toggle Item ESP",
-  "category.storageitemesp": "Storage & Item ESP"
+  "key.category.storageitemesp.main": "Storage & Item ESP"
 }
