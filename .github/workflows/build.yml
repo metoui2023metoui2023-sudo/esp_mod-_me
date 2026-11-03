@@ -2,7 +2,12 @@ name: Build mod jar
 
 on:
   push:
+    branches: [main]
+    paths-ignore: ['dist/**']
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -26,3 +31,13 @@ jobs:
         with:
           name: storage-item-esp-jar
           path: build/libs/*.jar
+
+      - name: Commit jar to dist/
+        run: |
+          mkdir -p dist
+          cp build/libs/storage-item-esp-1.0.0.jar dist/
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add dist
+          git commit -m "Add built jar [skip ci]" || echo "nothing to commit"
+          git push
